@@ -1,0 +1,8 @@
+---
+# tasks file for base
+- name: Install default packages
+  yum: name={{ item }} state=installed
+  with_items:
+    - vim
+    - "@Development tools"
+    - policycoreutils-python

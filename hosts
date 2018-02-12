@@ -1,0 +1,3 @@
+[nginx]
+nginx01		ansible_host=192.168.0.108	ansible_port=22		ansible_user=root
+nginx02		ansible_host=192.168.0.110      ansible_port=22         ansible_user=root

@@ -1,0 +1,77 @@
+
+PLAY [install base packages and nginx] *******************************************************************************
+
+TASK [Gathering Facts] ***********************************************************************************************
+ok: [nginx01]
+ok: [nginx02]
+
+TASK [base : Install default packages] *******************************************************************************
+changed: [nginx01] => (item=[u'vim', u'@Development tools', u'policycoreutils-python'])
+changed: [nginx02] => (item=[u'vim', u'@Development tools', u'policycoreutils-python'])
+
+TASK [epel : install epel-release] ***********************************************************************************
+changed: [nginx02]
+changed: [nginx01]
+
+TASK [install_nginx : install nginx] *********************************************************************************
+changed: [nginx01]
+changed: [nginx02]
+
+TASK [install_nginx : create /var/www/html] **************************************************************************
+changed: [nginx02]
+changed: [nginx01]
+
+PLAY [place nginx.conf and index.html and restart nginx if needed] ***************************************************
+
+TASK [Gathering Facts] ***********************************************************************************************
+ok: [nginx01]
+
+TASK [configure_nginx : place /etc/nginx/nginx.conf] *****************************************************************
+changed: [nginx01]
+
+TASK [configure_nginx : place /var/www/html/index.html] **************************************************************
+changed: [nginx01]
+
+TASK [configure_nginx : service] *************************************************************************************
+changed: [nginx01]
+
+RUNNING HANDLER [configure_nginx : restart nginx] ********************************************************************
+ok: [nginx01] => {
+    "msg": "checking config first"
+}
+
+RUNNING HANDLER [configure_nginx : check nginx config] ***************************************************************
+ok: [nginx01]
+
+RUNNING HANDLER [configure_nginx : restart nginx - after config check] ***********************************************
+changed: [nginx01]
+
+PLAY [place nginx.conf and index.html and restart nginx if needed] ***************************************************
+
+TASK [Gathering Facts] ***********************************************************************************************
+ok: [nginx02]
+
+TASK [configure_nginx : place /etc/nginx/nginx.conf] *****************************************************************
+changed: [nginx02]
+
+TASK [configure_nginx : place /var/www/html/index.html] **************************************************************
+changed: [nginx02]
+
+TASK [configure_nginx : service] *************************************************************************************
+changed: [nginx02]
+
+RUNNING HANDLER [configure_nginx : restart nginx] ********************************************************************
+ok: [nginx02] => {
+    "msg": "checking config first"
+}
+
+RUNNING HANDLER [configure_nginx : check nginx config] ***************************************************************
+ok: [nginx02]
+
+RUNNING HANDLER [configure_nginx : restart nginx - after config check] ***********************************************
+changed: [nginx02]
+
+PLAY RECAP ***********************************************************************************************************
+nginx01                    : ok=12   changed=9    unreachable=0    failed=0   
+nginx02                    : ok=12   changed=9    unreachable=0    failed=0   
+

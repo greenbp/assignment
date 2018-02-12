@@ -1,0 +1,13 @@
+---
+- name: install base packages and nginx
+  hosts: nginx
+  roles:
+  - base
+  - install_nginx
+
+- name: place nginx.conf and index.html and restart nginx if needed
+  hosts: nginx
+  roles:
+  - configure_nginx
+  serial: 1
+  

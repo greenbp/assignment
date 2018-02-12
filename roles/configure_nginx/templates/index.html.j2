@@ -1,0 +1,7 @@
+<p>I am {{ansible_hostname }}</p>
+
+<p> I was deployed on {{ ansible_date_time.date }} {{ ansible_date_time.hour }}:{{ ansible_date_time.minute }}:{{ ansible_date_time.second }}</p>
+
+<p>My IP address is {{ ansible_default_ipv4.address }}</p>
+
+<p>I am running {{ ansible_distribution }} {{ ansible_distribution_version }}</p>

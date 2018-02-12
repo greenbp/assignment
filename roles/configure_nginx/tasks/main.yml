@@ -1,0 +1,23 @@
+---
+# tasks file for configure_nginx
+
+- name: place /etc/nginx/nginx.conf
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+  tags:
+    - config
+  notify:
+    - restart nginx
+
+- name: place /var/www/html/index.html
+  template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+  tags:
+    - html
+
+- service:
+    name: nginx
+    enabled: yes
+    state: started
